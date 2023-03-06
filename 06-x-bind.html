@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>use x-bind in alpine js</title>
+    <link rel="stylesheet" href="./dist/style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.11.1/dist/cdn.min.js"></script>
+</head>
+<body>
+    <!-- x-bind use to bind some html attributes based on the result of js expressions -->
+    <div x-data="{open: false}">
+
+        <button 
+            class="px-4 py-2 rounded bg-blue-600 text-white cursor-pointer m-2 active:opacity-60"
+            @click="open = !open">
+                toggle color
+        </button>
+
+        <p 
+            x-bind:class="open ? 'p-5 text-white bg-black' : 'p-5 text-black bg-white' ">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur at, voluptatem non reprehenderit ea quisquam sit recusandae accusamus atque dicta blanditiis, beatae amet nemo rerum eum sequi natus. Beatae, fugit?
+        </p>
+
+    </div>
+
+    <!-- 
+        note:
+            you can use shorthand directly by :attribute ex :class="expression" 
+    -->
+
+    <!-- 
+        note: shorthand condition 
+            shonw ? '' : 'hidden' => will be => shown || 'hidden'
+            closed ? 'hidden' : '' => will be => closed && 'hidden'
+    -->
+    <div 
+        x-data="{ shown: false }">
+
+        <p 
+            :class="shown || 'hidden' ">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis odio blanditiis nulla! Ducimus mollitia nam quam a ad et id veniam, vitae, neque iste deserunt, iusto reprehenderit labore consectetur repudiandae!
+        </p>
+        
+    </div>
+
+    <div 
+        x-data="{ closed: true }">
+
+        <p :class="closed && 'hidden' ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, nulla? Doloribus accusantium voluptatibus qui dolorum. Officia expedita aperiam, saepe, culpa repellat quidem delectus accusantium placeat odio non, fuga amet maiores!</p>
+
+    </div>
+
+    <!-- 
+        note: you can use object {} for condition bind
+
+     -->
+     <div 
+        x-data="{
+            collapse: false,
+            open() { this.collapse = !this.collapse }
+        }"
+     >
+        <button 
+            class="px-6 py-2 mb-3 ml-3 border border-black rounded cursor-pointer" 
+            @click="open">toggle</button>
+
+        <p :class="{ 'hidden': !collapse }">Text May show if you toggle button click</p>
+     </div>
+
+     <!-- 
+        note: if you use class and :class every property are not conditioned will stay in class 
+      -->
+     <div x-data="{open: false}">
+
+        <button 
+            class="px-4 py-2 rounded bg-blue-600 text-white cursor-pointer m-2 active:opacity-60"
+            @click="open = !open">
+                toggle color
+        </button>
+
+        <p 
+            class="p-5" 
+            :class="open ? 'text-white bg-black' : 'text-black bg-white' ">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur at, voluptatem non reprehenderit ea quisquam sit recusandae accusamus atque dicta blanditiis, beatae amet nemo rerum eum sequi natus. Beatae, fugit?
+        </p>
+
+    </div>
+</body>
+</html>
