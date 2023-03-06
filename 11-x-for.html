@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>use x-for in alpine js</title>
+    <link rel="stylesheet" href="./dist/style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.11.1/dist/cdn.min.js"></script>
+</head>
+<body>
+    <!-- x-for used for iterating throught a list -->
+    <!-- 
+        note:
+            - x-for must be used with <template>
+            - <template> must have one root element
+     -->
+    <div 
+        x-data="{ users: ['Name 1', 'Name 2', 'Name 3'] }">
+
+        <ul>
+            <template x-for="user in users">
+                <li x-text="user"></li>
+            </template>
+        </ul>
+    </div>
+
+    <!-- with keys -->
+    <div x-data="{colors: [ 
+                            {id: 1, name:'Name 1' }, 
+                            {id: 2, name:'Name 2' }, 
+                            {id: 3, name:'Name 3' } 
+                        ]
+                }">
+        
+        <ul>
+            <template x-for="color in colors" :key="color.id">
+                <li x-text="color.name"></li>
+            </template>
+        </ul>
+    </div>
+
+    <!-- access index -->
+    <div 
+        x-data="{ users: ['Name 1', 'Name 2', 'Name 3'] }">
+
+        <ul>
+            <template x-for="(user, index) in users">
+                <li>
+                    <span x-text="index + 1"></span>
+                    -
+                    <span x-text="user"></span>
+                </li>
+            </template>
+        </ul>
+    </div>
+
+    <!-- use range and iterate it -->
+    <ul x-data>
+        <template x-for="i in 5">
+            <li x-text="i"></li>
+        </template>
+    </ul>
+</body>
+</html>
