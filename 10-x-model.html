@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>use x-model in alpine js</title>
+    <link rel="stylesheet" href="./dist/style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.11.1/dist/cdn.min.js"></script>
+</head>
+<body>
+    <!-- x-model all you to bind value of input into element -->
+    <div
+        class="flex justify-center items-center m-4" 
+        x-data="{name}">
+
+        <label 
+            class="text-base text-gray-800" 
+            for="nameInput">
+                Enter you name here
+        </label>
+
+        <input 
+            class="p-2 border border-gray-600 rounded outline-none ml-2 mr-2"
+            id="nameInput" type="text" x-model="name">
+
+        <div class="bg-cyan-700 p-2 rounded text-white h-10" x-text="name"></div>
+    </div>
+
+    <!-- x-model work with all the inputs -->
+
+    <!-- text input -->
+    <div x-data="{inputTextValue: ''}">
+        <input type="text" placeholder="enter text here" x-model="inputTextValue">
+        <p x-text="inputTextValue"></p>
+    </div>
+
+    <!-- number input -->
+    <div x-data="{inputNumberValue: '0'}">
+        <input type="number" x-model="inputNumberValue">
+        <p x-text="inputNumberValue"></p>
+    </div>
+
+    <!-- range -->
+    <div x-data="{rangeValue: 8}">
+        <input type="range" min="0" max="10" x-model="rangeValue">
+        <p>Range value is <span x-text="rangeValue"></span></p>
+    </div>
+
+    <!-- color -->
+    <div x-data="{inputColorValue: '#000000'}">
+        <input type="color" x-model="inputColorValue">
+        <p x-text="inputColorValue"></p>
+    </div>
+
+    <!-- date -->
+    <div x-data="{inputDateValue: ''}">
+        <input type="date" x-model="inputDateValue">
+        <p x-text="inputDateValue"></p>
+    </div>
+
+    <!-- file -->
+    <div x-data="{inputFileValue: ''}">
+        <input type="file" x-model="inputFileValue">
+        <p x-text="inputFileValue"></p>
+    </div>
+
+    <!-- time -->
+    <div x-data="{inputTimeValue: ''}">
+        <input type="time" x-model="inputTimeValue">
+        <p x-text="inputTimeValue"></p>
+    </div>
+
+    <!-- textarea -->
+    <div x-data="{inputTextAreaValue: ''}">
+        <textarea x-model="inputTextAreaValue"></textarea>
+        <p x-text="inputTextAreaValue"></p>
+    </div>
+
+    <!-- checkbox -->
+    <div x-data="{colors: ['BLUE', 'RED']}">
+        <div>
+            <label>RED</label>
+            <input value="RED" x-model="colors" type="checkbox">
+        </div>
+        <div>
+            <label>GREEN</label>
+            <input value="GREEN" x-model="colors" type="checkbox">
+        </div>
+        <div>
+            <label>BLUE</label>
+            <input value="BLUE" x-model="colors" type="checkbox">
+        </div>
+
+        <p x-text="colors"></p>
+    </div>
+
+    <!-- radio -->
+    <div x-data="{feeling: 'good'}">
+        <p>How are you today ?</p>
+
+        <div>
+            <label>good</label>
+            <input type="radio" value="good" x-model="feeling">
+        </div>
+
+        <div>
+            <label>bad</label>
+            <input type="radio" value="bad" x-model="feeling">
+        </div>
+        
+        <p>you are <span x-text="feeling"></span> today</p>
+    </div>
+    <!-- select -->
+    <div x-data="{selectedColor: ''}">
+        <select x-model="selectedColor">
+            <option value="" disabled>Select A Color</option>
+            <option>Red</option>
+            <option>Green</option>
+            <option>Blue</option>
+        </select>
+        <p>you chose <span x-text="selectedColor !== '' ? selectedColor : 'nothing'"></span> as color </p>
+    </div>
+</body>
+</html>
