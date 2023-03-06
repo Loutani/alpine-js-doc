@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>use x-teleport in alpine js</title>
+    <link rel="stylesheet" href="./dist/style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.11.1/dist/cdn.min.js"></script>
+</head>
+<body>
+    <!-- x-teleport teleport element to spec place by selector (class id or any css selector) -->
+    <div x-data class="w-screen h-screen">
+        <div id="first" class="w-screen h-1/2 bg-orange-500">
+            <template x-teleport="#second">
+                <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium aspernatur, rem ex autem nostrum praesentium? Minus consequatur libero magni aut molestiae autem, iusto esse natus error consequuntur saepe dolorum quisquam.</p>
+            </template>
+        </div>
+
+        <div id="second" class="w-screen h-1/2 bg-yellow-700">
+
+        </div>
+    </div>
+</body>
+</html>

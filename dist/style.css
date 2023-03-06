@@ -574,6 +574,10 @@ video {
   height: 2.5rem;
 }
 
+.h-1\/2 {
+  height: 50%;
+}
+
 .w-screen {
   width: 100vw;
 }
@@ -665,6 +669,16 @@ video {
 .bg-cyan-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(14 116 144 / var(--tw-bg-opacity));
+}
+
+.bg-orange-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 115 22 / var(--tw-bg-opacity));
+}
+
+.bg-yellow-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(161 98 7 / var(--tw-bg-opacity));
 }
 
 .p-8 {
