@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>use x-if in alpine js</title>
+    <link rel="stylesheet" href="./dist/style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.11.1/dist/cdn.min.js"></script>
+</head>
+<body>
+    <!-- used to set condition -->
+    <div class="p-4" x-data="{open: false}">
+        <button 
+            class="py-1 px-6 border-black border rounded mb-2"
+            @click="open = !open"
+        >
+            <span x-text="open ? 'close' : 'open'"></span>
+        </button>
+        <template x-if="open">
+            <div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, consequatur placeat sit maiores esse cupiditate voluptates vel reiciendis, maxime eius quisquam iure. Accusantium cumque, est excepturi magni nostrum voluptate iusto.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error labore id reiciendis eaque adipisci. Ipsam ab provident deleniti dignissimos, inventore mollitia sit nesciunt adipisci eius doloribus iste iure quo assumenda.</p>
+            </div>
+        </template>
+    </div>
+</body>
+</html>
