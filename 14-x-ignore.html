@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>use x-ignore in alpine js</title>
+    <link rel="stylesheet" href="./dist/style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.11.1/dist/cdn.min.js"></script>
+</head>
+<body>
+    <div x-data="{text: 'hi this is text will render in the DOM'}">
+        <p x-text="text"></p>
+        <div x-ignore>
+            <p x-text="text">this is the p tag text</p>
+        </div>
+    </div>
+</body>
+</html>
