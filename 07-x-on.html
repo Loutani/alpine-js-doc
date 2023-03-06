@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>use x-on in alpine js</title>
+    <link rel="stylesheet" href="./dist/style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.11.1/dist/cdn.min.js"></script>
+</head>
+<body>
+    <!-- 
+        x-on:event to handle events 
+    -->
+    <div x-data>
+        <button 
+            x-on:click="alert('you clicked the button')">
+                click me
+        </button>
+    </div>
+
+    <!-- 
+        shorthand syntax @eventName="do"
+     -->
+    <div x-data>
+        <button 
+            @click="alert('you clicked the button')">
+                click me
+        </button>
+    </div>
+
+    <!-- 
+        use event object
+     -->
+    <div x-data>
+        <button 
+            @click="console.log($event)">
+                show event object
+        </button>
+    </div>
+
+    <!-- 
+        use method to handle click
+     -->
+     <div x-data>
+        <button 
+            @click="handleButtonClick">
+                show alert
+        </button>
+    </div>
+
+    <script>
+        /**
+         * handle the click on the button
+         * 
+         * @param {Event} e
+         * @returns {void}
+        **/
+        function handleButtonClick(e) {
+            console.log(e)
+            alert('you click the button')
+        }
+    </script>
+
+    <!-- 
+        Keyboard Events:
+            examples 
+                - @keyup.enter => when press Enter
+                - @keyup.shift.enter => when you press both of Shift and Enter 
+
+        list of keys:
+            - shift => Shift
+            - enter => Enter
+            - space => Space
+            - ctrl => Ctrl
+            - cmd => Cmd
+            - meta => Cmd on Mac, Windows key on Windows
+            - alt => Alt
+            - up down left right => Up/Down/Left/Right arrows
+            - escape => Escape
+            - tab => Tab
+            - caps-lock => Caps Lock
+            - equal => Equal =
+            - period => Period .
+            - slash => Forward Slash /
+     -->
+    <input 
+        class="p-2 border border-black rounded m-4"
+        type="text" 
+        x-data 
+        @keyup.enter="alert($event.target.value)">
+
+    <!-- 
+        custom Event
+     -->
+    <div 
+        x-data 
+        @foo="console.log('this is custom event call')">
+        <button
+            @click="$event.target.dispatchEvent(new CustomEvent('foo', { bubbles: true }))">
+            Custom Event
+        </button>
+    </div>
+
+    <!-- 
+        custom Event shorthand
+        $dispatch('eventName')
+     -->
+    <div 
+        x-data 
+        @foo="console.log('this is custom event with shorthand call')">
+        <button
+            @click="$dispatch('foo')">
+            Shorthand Custom Event
+        </button>
+    </div>
+
+    <!-- 
+        Modifiers
+            @event.prevent => preventDefault() call 
+            @event.stop => stopPropagation() call
+            @event.outside => this for click outside if the element
+            @event.window => register the event on window instead of the element
+            @event.document => register the event on document instead of the element
+            @event.once => event call only once
+            @input.debounce => make debounce before call method event handler
+            @@input.debounce.500ms => modifie the debounce time from 250ms (default) to 500ms
+            @event.throttle => repeat the method call every 250ms you can change that time like debounce
+            @event.self => event originated from element not from its childrens
+            @custom-event.camel => listen to custom event that camel case like customEvent
+            @custom-event.do => listen to custom event that have . in their name
+     -->
+    <form x-data @submit.prevent="console.log('stop submiting form')" action="/login">
+        <input type="text">
+        <button type="submit">Send</button>
+    </form>
+
+    <div x-data>
+        <p @click="alert('good')">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo quibusdam dolore adipisci animi sapiente rerum doloremque vitae nulla dignissimos nisi labore eos saepe mollitia exercitationem itaque, provident <button @click.stop>CLICK</button> consequatur atque laborum!</p>
+    </div>
+</body>
+</html>
