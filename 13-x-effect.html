@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>use x-effect in alpine js</title>
+    <link rel="stylesheet" href="./dist/style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.11.1/dist/cdn.min.js"></script>
+</head>
+<body>
+    <!-- x-effect use to re evaluating an expression when of its dependencies change -->
+    <div 
+        x-data="{
+            count: -1, 
+            description: '',
+            incrementCount() {
+                //this to make sur it execute
+                this.description;
+
+                //increment count by 1
+                this.count++
+            }
+        }"
+    >
+        <div class="flex justify-center items-center">
+            <label>Enter an Description</label>
+            <textarea class="m-2 p-2 outline-none border border-gray-500 rounded" x-model="description" x-effect="incrementCount"></textarea>
+            <p>you press keys <span x-text="count"></span> times</p>
+        </div>
+    </div>
+</body>
+</html>
