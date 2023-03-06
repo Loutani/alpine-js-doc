@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>use x-html in alpine js</title>
+    <link rel="stylesheet" href="./dist/style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.11.1/dist/cdn.min.js"></script>
+</head>
+<body>
+    <!-- x-html can render the value as html in element -->
+    <!-- note: becarefull of XSS atack -->
+    <div x-data="{tag: '<strong>2023</strong>'}">
+        <p>this is the <span x-html="tag"></span> year</p>
+    </div>
+</body>
+</html>
