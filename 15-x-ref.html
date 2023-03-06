@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>use x-ref in alpine js</title>
+    <link rel="stylesheet" href="./dist/style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.11.1/dist/cdn.min.js"></script>
+</head>
+<body>
+    <!-- x-ref reference an element to use it with $ref for some utils -->
+    <!-- $refs.ref can use any js dom methods and attributes -->
+    <div x-data="{}">
+        <button @click="$refs.garbage.remove()">remove none language</button>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JS</li>
+            <li x-ref="garbage">POTATO</li>
+        </ul>
+    </div>
+</body>
+</html>
